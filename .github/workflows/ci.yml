@@ -1,0 +1,43 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.14"]
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: mdl
+          POSTGRES_PASSWORD: mdl_local_dev
+          POSTGRES_DB: derivlab_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U mdl -d derivlab_test"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+    env:
+      MDL_DB_NAME: derivlab_test
+      DERIVLAB_REQUIRE_DB: "1"   # the integration test must run here, not skip
+    steps:
+      - uses: actions/checkout@v4
+      # market-risk-lab is consumed as an installed package, pinned to the commit this was tested against
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/market-risk-lab
+          ref: 76e8776884d85896e52f451947ae32935cbb8d64
+          path: market-risk-lab
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install ./market-risk-lab -e ".[dev]" pyflakes
+      - run: python -m pyflakes src tests
+      - run: pytest -q
+      - run: derivlab check
+      - run: derivlab run --synthetic --out /tmp/synthetic

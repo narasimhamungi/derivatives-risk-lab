@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "derivatives-risk-lab"
+version = "0.1.0"
+description = "Option pricing (Black-Scholes, binomial, Monte Carlo), tested Greeks, delta hedging with P&L attribution, scenario ladders and options-book VaR on top of market-risk-lab"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.12"
+dependencies = [
+    "market-risk-lab>=0.1.0",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+derivlab = "derivlab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: needs a Postgres test database (MDL_DB_NAME must end in _test)"]

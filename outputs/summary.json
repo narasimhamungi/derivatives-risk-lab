@@ -1,0 +1,286 @@
+{
+ "built_at": "2026-11-01T19:10:52+00:00",
+ "synthetic": false,
+ "data": {
+  "source": "marketdata-lakehouse gold layer via market-risk-lab",
+  "issues": {
+   "outlier": 49
+  },
+  "returns": 1966,
+  "from": "2019-01-03",
+  "to": "2026-10-28",
+  "underlyings": [
+   "AAPL",
+   "JPM",
+   "XOM",
+   "AMZN",
+   "NEE",
+   "CAT",
+   "JNJ",
+   "PG"
+  ]
+ },
+ "greeks_max_relative_error": {
+  "price": {
+   "finite_difference": null,
+   "binomial": 0.00020555746335138765,
+   "monte_carlo": 0.000801035465731517
+  },
+  "delta": {
+   "finite_difference": 9.31902266476658e-06,
+   "binomial": 5.011311940470289e-05,
+   "monte_carlo": 0.0017359410247437732
+  },
+  "gamma": {
+   "finite_difference": 7.553450861384066e-05,
+   "binomial": 0.000739254048419917,
+   "monte_carlo": 0.01939111008456004
+  },
+  "vega": {
+   "finite_difference": 7.876097466181679e-08,
+   "binomial": null,
+   "monte_carlo": 0.001994160852559253
+  },
+  "theta": {
+   "finite_difference": 2.2123103558889985e-09,
+   "binomial": 0.00043878572365115817,
+   "monte_carlo": null
+  },
+  "rho": {
+   "finite_difference": 9.519313709629074e-11,
+   "binomial": null,
+   "monte_carlo": null
+  }
+ },
+ "book_totals": {
+  "value": 951077.7903143944,
+  "dollar_delta": 1105618.5069778233,
+  "dollar_gamma_1pct": -256383.43718450243,
+  "vega_per_point": -4538.720430549591,
+  "theta_per_day": 980.3742752162823,
+  "rho_per_pct": 1949.1536034376181
+ },
+ "ladder_extremes": {
+  "worst": -542749.6546704265,
+  "largest_approximation_error": 344317.23450511665
+ },
+ "var": [
+  {
+   "method": "full_revaluation_hs",
+   "alpha": 0.99,
+   "forecasts": 1716,
+   "exceptions": 23,
+   "expected": 17.160000000000014,
+   "rate": 0.013403263403263404,
+   "kupiec_p": 0.17801688302913699,
+   "kupiec_5pct": "not rejected",
+   "red_share": 0.0,
+   "latest_var": 81809.14769158755,
+   "latest_es": 162147.8513142929,
+   "mean_var": 83448.97477010755,
+   "loss_over_es": 1.2110118441458324
+  },
+  {
+   "method": "full_revaluation_hs",
+   "alpha": 0.975,
+   "forecasts": 1716,
+   "exceptions": 48,
+   "expected": 42.90000000000004,
+   "rate": 0.027972027972027972,
+   "kupiec_p": 0.4388973400726276,
+   "kupiec_5pct": "not rejected",
+   "red_share": null,
+   "latest_var": 53217.44395215073,
+   "latest_es": 99795.89228672523,
+   "mean_var": 55210.263914398274,
+   "loss_over_es": 1.1664661632403728
+  },
+  {
+   "method": "delta_gamma_hs",
+   "alpha": 0.99,
+   "forecasts": 1716,
+   "exceptions": 21,
+   "expected": 17.160000000000014,
+   "rate": 0.012237762237762238,
+   "kupiec_p": 0.3680543920995992,
+   "kupiec_5pct": "not rejected",
+   "red_share": 0.0,
+   "latest_var": 81957.20109711685,
+   "latest_es": 162899.9170444497,
+   "mean_var": 84793.52989399756,
+   "loss_over_es": 1.2754027835621
+  },
+  {
+   "method": "delta_gamma_hs",
+   "alpha": 0.975,
+   "forecasts": 1716,
+   "exceptions": 48,
+   "expected": 42.90000000000004,
+   "rate": 0.027972027972027972,
+   "kupiec_p": 0.4388973400726276,
+   "kupiec_5pct": "not rejected",
+   "red_share": null,
+   "latest_var": 53159.42377293571,
+   "latest_es": 100111.03589370343,
+   "mean_var": 54621.72251227586,
+   "loss_over_es": 1.1723904042984343
+  },
+  {
+   "method": "delta_hs",
+   "alpha": 0.99,
+   "forecasts": 1716,
+   "exceptions": 31,
+   "expected": 17.160000000000014,
+   "rate": 0.018065268065268064,
+   "kupiec_p": 0.0025557636223278828,
+   "kupiec_5pct": "rejected",
+   "red_share": 0.0,
+   "latest_var": 59089.52088275362,
+   "latest_es": 120877.5594828115,
+   "mean_var": 69271.629890805,
+   "loss_over_es": 1.2104327123525225
+  },
+  {
+   "method": "delta_hs",
+   "alpha": 0.975,
+   "forecasts": 1716,
+   "exceptions": 54,
+   "expected": 42.90000000000004,
+   "rate": 0.03146853146853147,
+   "kupiec_p": 0.09873090907261636,
+   "kupiec_5pct": "not rejected",
+   "red_share": null,
+   "latest_var": 50040.794217432456,
+   "latest_es": 79635.79383626449,
+   "mean_var": 51427.84486440979,
+   "loss_over_es": 1.2236445915552672
+  },
+  {
+   "method": "delta_normal",
+   "alpha": 0.99,
+   "forecasts": 1716,
+   "exceptions": 32,
+   "expected": 17.160000000000014,
+   "rate": 0.018648018648018648,
+   "kupiec_p": 0.0013074913757146422,
+   "kupiec_5pct": "rejected",
+   "red_share": 0.0,
+   "latest_var": 71507.55412360441,
+   "latest_es": 81923.6676676981,
+   "mean_var": 63200.89165059649,
+   "loss_over_es": 1.604904166437066
+  },
+  {
+   "method": "delta_normal",
+   "alpha": 0.975,
+   "forecasts": 1716,
+   "exceptions": 44,
+   "expected": 42.90000000000004,
+   "rate": 0.02564102564102564,
+   "kupiec_p": 0.8654956987327697,
+   "kupiec_5pct": "not rejected",
+   "red_share": null,
+   "latest_var": 60245.60310551078,
+   "latest_es": 71859.65674311755,
+   "mean_var": 53247.1831957032,
+   "loss_over_es": 1.5728448577909804
+  }
+ ],
+ "hedge_frequency": [
+  {
+   "rebalance_days": 1,
+   "hedges": 63,
+   "mean_pnl": 0.0016289960851767944,
+   "std_pnl": 0.542721633736115,
+   "std_pct_premium": 0.09918000225065836,
+   "premium": 5.472087330311716
+  },
+  {
+   "rebalance_days": 2,
+   "hedges": 32,
+   "mean_pnl": 0.0018895984792095851,
+   "std_pnl": 0.7465678679479243,
+   "std_pct_premium": 0.13643200900914648,
+   "premium": 5.472087330311716
+  },
+  {
+   "rebalance_days": 5,
+   "hedges": 13,
+   "mean_pnl": 0.0045380145049170855,
+   "std_pnl": 1.1559242221067432,
+   "std_pct_premium": 0.21124009035888253,
+   "premium": 5.472087330311716
+  },
+  {
+   "rebalance_days": 10,
+   "hedges": 7,
+   "mean_pnl": -0.006091683589638432,
+   "std_pnl": 1.5916459184218967,
+   "std_pct_premium": 0.29086632254665223,
+   "premium": 5.472087330311716
+  },
+  {
+   "rebalance_days": 21,
+   "hedges": 3,
+   "mean_pnl": -0.001805384794912444,
+   "std_pnl": 2.304009122989822,
+   "std_pct_premium": 0.42104757908872315,
+   "premium": 5.472087330311716
+  }
+ ],
+ "hedge_realised_vol": [
+  {
+   "realised_vol": 0.15,
+   "implied_vol": 0.25,
+   "mean_pnl": 1.9894971602434197,
+   "std_pnl": 0.6502877032027568,
+   "expected_from_gamma": 1.9713648709196099,
+   "premium": 5.472087330311716
+  },
+  {
+   "realised_vol": 0.2,
+   "implied_vol": 0.25,
+   "mean_pnl": 0.9969703649241687,
+   "std_pnl": 0.5462437608097008,
+   "expected_from_gamma": 0.9910695653144439,
+   "premium": 5.472087330311716
+  },
+  {
+   "realised_vol": 0.25,
+   "implied_vol": 0.25,
+   "mean_pnl": -0.0007314843732565437,
+   "std_pnl": 0.5477892662155112,
+   "expected_from_gamma": 0.0,
+   "premium": 5.472087330311716
+  },
+  {
+   "realised_vol": 0.3,
+   "implied_vol": 0.25,
+   "mean_pnl": -0.9923865272235435,
+   "std_pnl": 0.7719555435223437,
+   "expected_from_gamma": -0.9984511604961597,
+   "premium": 5.472087330311716
+  },
+  {
+   "realised_vol": 0.35,
+   "implied_vol": 0.25,
+   "mean_pnl": -2.006940534453552,
+   "std_pnl": 1.1780358674944222,
+   "expected_from_gamma": -1.9990718382353732,
+   "premium": 5.472087330311716
+  }
+ ],
+ "hedge_example": {
+  "underlying": "AAPL",
+  "days": 63,
+  "kind": "call",
+  "realised_vol": 0.24442662760581393,
+  "implied_vol": 0.25,
+  "total": 0.7304507094995857,
+  "gamma": -2.6957471728678333,
+  "theta": 3.955511579235195,
+  "carry": -0.47632967923381525,
+  "residual": -0.0529840176339613,
+  "premium": 5.472087330311716
+ }
+}

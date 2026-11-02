@@ -1,0 +1,65 @@
+# derivatives-risk-lab settings. Implied volatilities, rates and dividend
+# yields are assumptions: the lakehouse holds prices, not option quotes.
+
+market:
+  rate: 0.04
+  dividend_yield: 0.0
+  dividend_yields: {JPM: 0.022, XOM: 0.034, JNJ: 0.031, PG: 0.025, CAT: 0.017, NEE: 0.029, AAPL: 0.005}
+  vols: {AAPL: 0.27, JPM: 0.24, XOM: 0.26, JNJ: 0.17, PG: 0.16, AMZN: 0.33, CAT: 0.29, NEE: 0.25}
+
+# The book: the same eight underlyings as market-risk-lab's equity portfolio.
+# Strikes as a share of spot, expiries in calendar days, notional in dollars of
+# underlying. It is the same book on every date (constant moneyness and maturity).
+book:
+  - {underlying: AAPL, kind: call, moneyness: 1.00, days: 63, notional: 1000000, side: long}
+  - {underlying: AAPL, kind: put, moneyness: 0.90, days: 63, notional: 2000000, side: short}
+  - {underlying: JPM, kind: put, moneyness: 0.95, days: 91, notional: 3000000, side: long}
+  - {underlying: XOM, kind: call, moneyness: 1.00, days: 30, notional: 500000, side: long}
+  - {underlying: XOM, kind: put, moneyness: 1.00, days: 30, notional: 500000, side: long}
+  - {underlying: AMZN, kind: call, moneyness: 1.05, days: 63, notional: 2000000, side: short}
+  - {underlying: NEE, kind: put, moneyness: 0.90, days: 182, notional: 2500000, side: short}
+  - {underlying: CAT, kind: call, moneyness: 1.10, days: 91, notional: 1500000, side: long}
+  - {underlying: JNJ, kind: call, moneyness: 1.00, days: 30, notional: 2000000, side: short}
+  - {underlying: JNJ, kind: put, moneyness: 1.00, days: 30, notional: 2000000, side: short}
+  - {underlying: PG, kind: stock, notional: 1000000, side: long}
+
+scenarios:
+  spot_shocks: [-0.20, -0.10, -0.05, -0.02, 0.0, 0.02, 0.05, 0.10, 0.20]
+  vol_shocks: [-0.10, -0.05, 0.0, 0.05, 0.10]     # absolute volatility points
+
+var:
+  window: 250
+  alphas: [0.99, 0.975]
+  horizon_days: 1
+
+hedge:
+  spot: 100
+  strike: 100
+  days: 63                  # trading days
+  implied_vol: 0.25
+  kind: call
+  realised_vols: [0.15, 0.20, 0.25, 0.30, 0.35]
+  rebalance_days: [1, 2, 5, 10, 21]
+  paths: 20000
+  seed: 11
+  cost_bps: 0
+  example_underlying: AAPL   # the last 63 days of this stock's history are hedged as a worked example
+
+data:
+  source: lakehouse          # or synthetic
+  start_date: "2019-01-01"
+  end_date: null
+
+greeks_check:
+  spot: 100
+  rate: 0.04
+  div_yield: 0.01
+  cases:                     # (strike, days, vol, kind)
+    - [90, 30, 0.20, call]
+    - [100, 91, 0.25, call]
+    - [110, 365, 0.30, call]
+    - [90, 182, 0.35, put]
+    - [100, 30, 0.15, put]
+    - [120, 365, 0.25, put]
+  tree_steps: 2000
+  mc_paths: 400000
